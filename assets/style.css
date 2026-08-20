@@ -1,0 +1,200 @@
+/* =========================================================
+   Kingsley Isichei — portfolio, built directly from the résumé
+   Design: an evaluator's report/case-file, not a pitch page.
+   ========================================================= */
+:root {
+  --paper: #F3F2EE;
+  --panel: #FFFFFF;
+  --line: #DAD8D0;
+  --line-soft: #E7E5DD;
+  --ink: #1B1B18;
+  --muted: #656358;
+  --faint: #969385;
+  --stamp: #A63D2F;
+  --stamp-soft: rgba(166, 61, 47, 0.08);
+  --verified: #2B6E63;
+  --verified-soft: rgba(43, 110, 99, 0.08);
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Public Sans", "Segoe UI", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+
+  --maxw: 980px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+/* =========================================================
+   Nav
+   ========================================================= */
+.nav {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(243, 242, 238, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.nav-mark { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.04em; text-decoration: none; color: var(--ink); }
+.nav-links { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.02em; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover, .nav-links a:focus-visible { color: var(--stamp); }
+.nav-cta {
+  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.02em;
+  color: var(--paper); background: var(--ink);
+  padding: 8px 14px; border-radius: 2px; text-decoration: none; white-space: nowrap;
+}
+@media (max-width: 780px) { .nav-links { display: none; } }
+
+/* =========================================================
+   Header / cover
+   ========================================================= */
+.cover { padding: 64px 0 40px; border-bottom: 1px solid var(--line); }
+.cover-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+.file-meta { font-family: var(--font-mono); font-size: 11.5px; color: var(--faint); letter-spacing: 0.03em; }
+.file-meta div { margin-bottom: 3px; }
+
+.stamp {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; font-weight: 600;
+  color: var(--verified); border: 1.5px solid var(--verified); border-radius: 3px;
+  padding: 7px 12px; transform: rotate(-3deg); white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.stamp::before { content: "✓"; }
+
+h1.name {
+  font-family: var(--font-display); font-weight: 600; font-size: clamp(38px, 6.4vw, 58px);
+  margin: 26px 0 6px; letter-spacing: -0.01em; line-height: 1.02;
+}
+.role-line {
+  font-family: var(--font-mono); font-size: 13.5px; color: var(--muted); letter-spacing: 0.01em;
+  margin: 0 0 22px;
+}
+.role-line .sep { color: var(--faint); margin: 0 6px; }
+
+.contact-row { display: flex; flex-wrap: wrap; gap: 4px 0; font-family: var(--font-mono); font-size: 13px; margin-bottom: 26px; }
+.contact-row a, .contact-row span { color: var(--ink); text-decoration: none; }
+.contact-row a { border-bottom: 1px solid var(--line); }
+.contact-row a:hover { border-color: var(--stamp); color: var(--stamp); }
+.contact-sep { color: var(--faint); margin: 0 10px; }
+
+.cover-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.02em;
+  padding: 11px 18px; border-radius: 2px; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--ink);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.btn-solid { background: var(--ink); color: var(--paper); }
+.btn-solid:hover { background: var(--stamp); border-color: var(--stamp); }
+.btn-outline { background: transparent; color: var(--ink); }
+.btn-outline:hover { border-color: var(--stamp); color: var(--stamp); }
+
+/* =========================================================
+   Section scaffolding — filed like report sections
+   ========================================================= */
+.section { padding: 52px 0; border-bottom: 1px solid var(--line); }
+.section:last-of-type { border-bottom: none; }
+.section-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 26px; }
+.section-tag {
+  font-family: var(--font-mono); font-size: 11px; color: var(--faint); letter-spacing: 0.06em;
+  border: 1px solid var(--line); border-radius: 2px; padding: 3px 7px; white-space: nowrap;
+}
+.section-title { font-family: var(--font-display); font-size: clamp(21px, 2.6vw, 27px); font-weight: 600; margin: 0; }
+
+.summary-text { max-width: 720px; font-size: 16px; color: var(--ink); }
+.summary-text .hl { color: var(--stamp); font-weight: 600; }
+
+/* =========================================================
+   Competencies
+   ========================================================= */
+.comp-list { display: flex; flex-direction: column; gap: 18px; }
+.comp-row { display: grid; grid-template-columns: 220px 1fr; gap: 16px; padding-bottom: 16px; border-bottom: 1px dashed var(--line-soft); }
+.comp-row:last-child { border-bottom: none; padding-bottom: 0; }
+.comp-label { font-family: var(--font-mono); font-size: 12.5px; font-weight: 600; color: var(--verified); letter-spacing: 0.01em; }
+.comp-value { color: var(--muted); font-size: 14.5px; }
+@media (max-width: 680px) { .comp-row { grid-template-columns: 1fr; gap: 4px; } }
+
+/* =========================================================
+   Experience — filed as report entries
+   ========================================================= */
+.entry { padding: 26px 0; border-bottom: 1px solid var(--line-soft); }
+.entry:first-child { padding-top: 0; }
+.entry:last-child { border-bottom: none; padding-bottom: 0; }
+.entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+.entry-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; }
+.entry-org { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.entry-date {
+  font-family: var(--font-mono); font-size: 12px; color: var(--stamp); border: 1px solid var(--stamp); border-radius: 2px;
+  padding: 3px 8px; white-space: nowrap; background: var(--stamp-soft);
+}
+.entry-list { margin: 0; padding-left: 0; list-style: none; }
+.entry-list li {
+  position: relative; padding-left: 18px; margin-bottom: 8px; color: var(--muted); font-size: 14.5px; line-height: 1.55;
+}
+.entry-list li::before { content: "—"; position: absolute; left: 0; color: var(--faint); }
+.entry-list li:last-child { margin-bottom: 0; }
+
+/* =========================================================
+   Projects
+   ========================================================= */
+.project { padding: 18px 0; border-bottom: 1px dashed var(--line-soft); }
+.project:last-child { border-bottom: none; padding-bottom: 0; }
+.project:first-child { padding-top: 0; }
+.project-name { font-family: var(--font-display); font-size: 17.5px; font-weight: 600; margin-bottom: 6px; }
+.project-desc { color: var(--muted); font-size: 14.5px; max-width: 760px; }
+
+/* =========================================================
+   Education / certifications / skills — compact rows
+   ========================================================= */
+.edu-degree { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+.edu-sub { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); margin-bottom: 8px; }
+.edu-note { color: var(--muted); font-size: 14px; }
+
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+.skill-group-label { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.04em; color: var(--verified); font-weight: 600; margin-bottom: 10px; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 7px; }
+.tag { font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); border: 1px solid var(--line); border-radius: 12px; padding: 4px 10px; background: var(--panel); }
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.footer { padding: 56px 0 60px; }
+.footer-panel { border: 1px solid var(--line); background: var(--panel); border-radius: 4px; padding: 40px; }
+.footer-tag { font-family: var(--font-mono); font-size: 11.5px; color: var(--stamp); letter-spacing: 0.05em; margin-bottom: 12px; }
+.footer h2 { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); font-weight: 600; margin: 0 0 22px; max-width: 560px; }
+.footer-contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; margin-top: 8px; }
+.fc-item { border-top: 1px solid var(--line); padding-top: 10px; }
+.fc-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; color: var(--faint); text-transform: uppercase; }
+.fc-value { font-size: 14.5px; margin-top: 4px; }
+.fc-value a { text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--line); }
+.fc-value a:hover { color: var(--stamp); border-color: var(--stamp); }
+.footer-bottom { text-align: center; margin-top: 34px; font-family: var(--font-mono); font-size: 11px; color: var(--faint); }
+
+/* =========================================================
+   Reveal
+   ========================================================= */
+.reveal { opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 560px) {
+  .wrap { padding: 0 18px; }
+  .cover { padding: 48px 0 32px; }
+  .footer-panel { padding: 26px; }
+}
